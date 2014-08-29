@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window>
+
+	<defaultcontrol always="true">10</defaultcontrol>
+	
+	<animation type="WindowOpen">
+		<effect type="slide" start="0,665" end="0,0" time="400" tween="quadratic" easing="out" />
+		<effect type="fade" start="0" end="100" time="300" delay="100" />
+	</animation>
+	
+	<animation type="WindowClose">
+		<effect type="slide" start="0,0" end="0,665" time="400" tween="quadratic" easing="out" />
+		<effect type="fade" start="100" end="0" time="300" delay="0" />
+	</animation>
+	
+	<controls>
+		
+		<!--background-->
+		<control type="image">
+			<left>0</left>
+			<top>415</top>
+			<width>1920</width>
+			<height>270</height>
+			<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+		</control>
+		
+		<!--top shadow-->
+		<control type="image">
+			<left>0</left>
+			<top>405</top>
+			<width>1920</width>
+			<height>10</height>
+			<texture flipy="true">homeshadow.png</texture>
+		</control>
+		
+		<!--bottom shadow-->
+		<control type="image">
+			<left>0</left>
+			<top>685</top>
+			<width>1920</width>
+			<height>10</height>
+			<texture>homeshadow.png</texture>
+		</control>
+		
+		<!--close button-->
+		<control type="button">
+			<description>Close Window button</description>
+			<left>5</left>
+			<top>415</top>
+			<width>50</width>
+			<height>25</height>
+			<label>-</label>
+			<font>-</font>
+			<onclick>PreviousMenu</onclick>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+			<texturenofocus>DialogCloseButton.png</texturenofocus>
+			<onleft>10</onleft>
+			<onright>10</onright>
+			<onup>10</onup>
+			<ondown>10</ondown>
+			<visible>system.getbool(input.enablemouse)</visible>
+		</control>
+		
+		<!--hidden title (to get label)-->
+		<control type="label" id="1">
+			<left>0</left>
+			<top>0</top>
+			<width>0</width>
+			<height>0</height>
+			<font>-</font>
+			<visible>false</visible>
+		</control>
+		
+		<!--title-->
+		<control type="label">
+			<description>header label</description>
+			<left>60</left>
+			<top>435</top>
+			<width>1800</width>
+			<height>45</height>
+			<font>main.menu</font>
+			<align>center</align>
+			<aligny>center</aligny>
+			<textcolor>text.primary</textcolor>
+			<label>$INFO[Control.GetLabel(1)] $INFO[System.Progressbar,- ,%]</label>
+		</control>
+		
+		<!--message-->
+		<control type="textbox" id="9"> <!--9-->
+			<description>text</description>
+			<left>60</left>
+			<top>495</top>
+			<width>1800</width>
+			<height>150</height>
+			<align>center</align>
+			<label>-</label>
+			<font>label</font>
+			<textcolor>text.primary</textcolor>
+			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+		</control>
+		
+		<!--progress bar-->
+		<control type="progress">
+			<left>585</left>
+			<top>630</top>
+			<width>750</width>
+			<height>7</height>
+			<info>System.Progressbar</info>
+		</control>
+		
+		<!--cancel circle border-->
+		<control type="image">
+			<left>1730</left>
+			<top>620</top>
+			<width>60</width>
+			<height>60</height>
+			<texture colordiffuse="text.primary">buttoncircleborder.png</texture>
+			<visible>Control.HasFocus(10)</visible>
+		</control>
+		
+		<!--cancel circle animation-->
+		<control type="image">
+			<left>1729</left>
+			<top>619</top>
+			<width>62</width>
+			<height>62</height>
+			<texture colordiffuse="$INFO[Skin.String(main.colour)]">buttoncircle.png</texture>
+			<visible>Control.HasFocus(10)</visible>
+			<animation effect="zoom" start="0" end="100" time="250" center="auto">Visible</animation>
+		</control>
+		
+		<!--cancel button-->
+		<control type="button" id="10">
+			<left>1730</left>
+			<top>620</top>
+			<width>130</width>
+			<height>60</height>
+			<label>222</label>
+			<font>button</font>
+			<align>left</align>
+			<textoffsetx>60</textoffsetx>
+			<textwidth>130</textwidth>
+			<textcolor>text.primary</textcolor>
+			<focusedcolor>text.primary</focusedcolor>
+			<align>center</align>
+			<onleft>10</onleft>
+			<onright>10</onright>
+			<onup>10</onup>
+			<ondown>10</ondown>
+			<texturefocus colordiffuse="white">nobuttonf.png</texturefocus>
+			<texturenofocus colordiffuse="text.primary">nobutton.png</texturenofocus>	
+		</control>
+		
+	</controls>
+	
+</window>

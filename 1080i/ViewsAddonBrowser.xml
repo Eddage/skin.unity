@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<includes>
+
+	<include name="AddonInfoListView1">
+		
+		<!--all content-->
+		<control type="group">
+			<visible>Control.IsVisible(550)</visible>
+			<include>VisibleFadeEffect</include>
+			
+			<!--content list-->
+			<control type="list" id="550">
+				<left>195</left>
+				<top>200</top>
+				<width>1004</width>
+				<height>700</height>
+				<onleft>2</onleft>
+				<onright>60</onright>
+				<onup>550</onup>
+				<ondown>550</ondown>
+				<viewtype label="$LOCALIZE[31033]">info</viewtype>
+				<pagecontrol>60</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons)</visible>
+				
+				<itemlayout height="70" width="1004">
+				
+					<!--background-->
+					<control type="image">
+						<left>4</left>
+						<top>0</top>
+						<width>1000</width>
+						<height>60</height>
+						<texture colordiffuse="button.nf">backgrounds/white.png</texture>
+					</control>
+					
+					<!--main label-->
+					<control type="label">
+						<left>19</left>
+						<top>0</top>
+						<width>990</width>
+						<height>60</height>
+						<font>label</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					
+					<!--secondary label-->
+					<control type="label">
+						<left>985</left>
+						<top>0</top>
+						<width>600</width>
+						<height>60</height>
+						<font>secondary.info</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Property(Addon.Status)]</label>
+					</control>
+					
+				</itemlayout>
+				
+				<focusedlayout height="70" width="1004">
+				
+					<!--background-->
+					<control type="image">
+						<left>4</left>
+						<top>0</top>
+						<width>1000</width>
+						<height>60</height>
+						<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
+					</control>
+				
+					<!--background strip-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>4</width>
+						<height>60</height>
+						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
+					</control>
+					
+					<!--main label-->
+					<control type="label">
+						<left>19</left>
+						<top>0</top>
+						<width>990</width>
+						<height>60</height>
+						<font>label</font>
+						<textcolor>text.primary</textcolor>
+						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					
+					<!--secondary label-->
+					<control type="label">
+						<left>985</left>
+						<top>0</top>
+						<width>600</width>
+						<height>60</height>
+						<font>secondary.info</font>
+						<textcolor>text.primary</textcolor>
+						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Property(Addon.Status)]</label>
+					</control>
+					
+				</focusedlayout>
+				
+			</control>
+			
+			<!--scrollbar-->
+			<control type="scrollbar" id="60">
+				<left>1209</left>
+				<top>200</top>
+				<onleft>550</onleft>
+				<onright>2</onright>
+				<orientation>vertical</orientation>
+				<showonepage>true</showonepage>
+			</control>
+			
+			<!--info-->
+			<control type="group">
+				<left>1226</left>
+				<top>200</top>
+				
+				<!--background-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>460</width>
+					<height>690</height>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+				</control>
+				
+				<!--thumb-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>460</width>
+					<height>460</height>
+					<aspectratio>scale</aspectratio>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+				</control>
+				
+				<!--album info-->
+				<control type="group">
+					<top>460</top>
+					<visible>!Container.Content(Songs)</visible>
+				
+					<!--info strip background-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>460</width>
+						<height>60</height>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+					</control>
+					
+					<!--secondary label-->
+					<control type="label">
+						<left>15</left>
+						<top>0</top>
+						<width>430</width>
+						<height>55</height>
+						<font>secondary.info.big</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Property(Addon.Version),$LOCALIZE[24051] ,]$INFO[ListItem.Property(Addon.Creator), • $LOCALIZE[21863]: ,] </label>
+					</control>
+				
+				</control>
+				
+				<!--addon description-->
+				<control type="textbox">
+					<left>15</left>
+					<top>527</top>
+					<width>430</width>
+					<height>150</height>
+					<font>label</font>
+					<align>left</align>
+					<textcolor>text.primary</textcolor>
+					<label>$INFO[ListItem.Property(Addon.Description)]</label>
+					<autoscroll time="2500" delay="3000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
+				</control>
+				
+			</control>
+			
+		</control>
+		
+	</include>
+	
+	<include name="AddonInfoThumbView1">
+	
+		<!--all content-->
+		<control type="group">
+		
+			<visible>Control.IsVisible(551)</visible>
+			<include>VisibleFadeEffect</include>
+			
+			<!--content list-->
+			<control type="panel" id="551">
+				<left>130</left>
+				<top>195</top>
+				<width>1300</width>
+				<height>700</height>
+				<onleft>2</onleft>
+				<onright>60</onright>
+				<onup>551</onup>
+				<ondown>551</ondown>
+				<viewtype label="$LOCALIZE[31033] 2">biginfo</viewtype>
+				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons)</visible>
+				<pagecontrol>60</pagecontrol>
+				<scrolltime>200</scrolltime>
+				
+				<itemlayout height="233" width="233">
+				
+					<!--icon-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true">$INFO[Listitem.Icon]</texture>
+					</control>
+			
+					<!--overlay background-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>35</width>
+						<height>35</height>
+						<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+						<visible>!IsEmpty(ListItem.Property(Addon.broken))</visible>
+					</control>
+					
+				</itemlayout>
+				
+				<focusedlayout height="233" width="233">
+				
+					<!--icon-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>233</width>
+						<height>233</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true">$INFO[Listitem.Icon]</texture>
+						<visible>!Container.Content(Episodes)</visible>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+					</control>
+			
+					<!--label background-->
+					<control type="image">
+						<left>5</left>
+						<top>148</top>
+						<width>197</width>
+						<height>80</height>
+						<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+					</control>
+					
+					<!--main label-->
+					<control type="textbox">
+						<left>20</left>
+						<top>153</top>
+						<width>167</width>
+						<height>65</height>
+						<font>secondary.info.big</font>
+						<textcolor>text.primary</textcolor>
+						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<align>left</align>
+						<label>$INFO[ListItem.Label]</label>
+						<autoscroll time="2000" delay="2000" repeat="2000" />
+					</control>
+			
+					<!--overlay background-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>35</width>
+						<height>35</height>
+						<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+						<visible>!IsEmpty(ListItem.Property(Addon.broken))</visible>
+					</control>
+					
+				</focusedlayout>
+				
+			</control>
+			
+			<!--scrollbar-->
+			<control type="scrollbar" id="60">
+				<left>1300</left>
+				<top>200</top>
+				<onleft>551</onleft>
+				<onright>2</onright>
+				<orientation>vertical</orientation>
+			</control>			
+			
+			<!--tv shows info-->			
+			<control type="group">
+				<left>931</left>
+				<top>200</top>
+				
+				<!--info-->
+				<control type="group">
+					<left>385</left>
+				
+					<!--background-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>460</width>
+						<height>690</height>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+					</control>
+					
+					<!--info strip background-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>460</width>
+						<height>130</height>
+						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+					</control>
+						
+					<!--secondary label-->
+					<control type="label">
+						<left>15</left>
+						<top>2</top>
+						<width>430</width>
+						<height>55</height>
+						<font>secondary.info.big</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Property(Addon.Creator),,$LOCALIZE[21863]: ]</label>
+					</control>
+						
+					<!--secondary label-->
+					<control type="label">
+						<left>15</left>
+						<top>37</top>
+						<width>430</width>
+						<height>55</height>
+						<font>secondary.info.big</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Property(Addon.Version),,$LOCALIZE[24051] ]</label>
+					</control>
+					
+					<!--rating-->
+					<control type="image">
+						<description>Rating value</description>
+						<left>15</left>
+						<top>85</top>
+						<width>128</width>
+						<height>32</height>
+						<aspectratio align="left">keep</aspectratio>
+						<texture colordiffuse="white">$INFO[ListItem.Property(Addon.StarRating),LeftRating/]</texture>
+					</control>
+					
+					<!--plot-->
+					<control type="textbox">
+						<left>15</left>
+						<top>140</top>
+						<width>430</width>
+						<height>490</height>
+						<font>label</font>
+						<align>left</align>
+						<textcolor>text.primary</textcolor>
+						<label>$INFO[ListItem.Property(Addon.Description)]</label>
+						<autoscroll time="2000" delay="15000" repeat="10000">Skin.HasSetting(AutoScroll)</autoscroll>
+					</control>
+					
+				</control>
+				
+			</control>
+			
+		</control>
+		
+	</include>
+	
+</includes>

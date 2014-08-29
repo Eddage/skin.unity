@@ -1,0 +1,14 @@
+[B]29/08/2014 - 0.0.3 [ALPHA] [/B]
+[CODED] OK Dialog
+[CODED] Yes No Dialog
+[CODED] Progress Dialog
+[CODED] Extended Progress Dialog
+[CODED] Home Menu (incomplete)
+
+
+[B]25/08/2014 - 0.0.2 [ALPHA][/B]
+[FIX] Changed GUI version to fix 'dependencies not met' issue
+
+
+[B]25/08/2014 - 0.0.1 [ALPHA][/B]
+First upload

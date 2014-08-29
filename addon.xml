@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<addon
+  id="skin.unity"
+  version="0.0.3"
+  name="Unity"
+  provider-name="Eddage">
+  <requires>
+    <import addon="xbmc.gui" version="5.0.2"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">A new skin for XBMC 13 Gotham by Eddage</summary>
+    <summary lang="en_AU">A new skin for XBMC 13 Gotham by Eddage</summary>
+    <summary lang="en_NZ">A new skin for XBMC 13 Gotham by Eddage</summary>
+    <summary lang="en_US">A new skin for XBMC 13 Gotham by Eddage</summary>
+    <platform>all</platform>
+  </extension>
+</addon>
