@@ -2,11 +2,11 @@
 
 <addon
   id="skin.unity"
-  version="0.0.3"
+  version="0.0.4"
   name="Unity"
   provider-name="Eddage">
   <requires>
-    <import addon="xbmc.gui" version="5.0.2"/>
+    <import addon="xbmc.gui" version="5.0.1"/>
   </requires>
   <extension
     point="xbmc.gui.skin"
