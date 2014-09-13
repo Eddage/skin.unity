@@ -44,6 +44,7 @@
 			<name>label</name>
 			<filename>Roboto-Light.ttf</filename>
 			<size>28</size>
+			<linespacing>1</linespacing>
 		</font>
 		
 		<font>
@@ -56,6 +57,12 @@
 			<name>secondary.info.light</name>
 			<filename>Roboto-Regular.ttf</filename>
 			<size>22</size>
+		</font>
+		
+		<font>
+			<name>secondary.info.small</name>
+			<filename>Roboto-Regular.ttf</filename>
+			<size>20</size>
 		</font>
 		
 		<font>
@@ -74,8 +81,21 @@
 		</font>
 		
 		<font>
+			<name>channel</name>
+			<filename>Roboto-Black.ttf</filename>
+			<size>28</size>
+			<linespacing>0.9</linespacing>
+		</font>
+		
+		<font>
 			<name>button</name>
 			<filename>Roboto-Light.ttf</filename>
+			<size>24</size>
+		</font>
+		
+		<font>
+			<name>button.bold</name>
+			<filename>Roboto-Bold.ttf</filename>
 			<size>24</size>
 		</font>
 		

@@ -30,7 +30,7 @@
 				<top>60</top>
 				<width>4</width>
 				<height>45</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
 			<!--breadcrumb labels-->
@@ -51,7 +51,7 @@
 				
 				<control type="label">
 					<width min="0" max="385">auto</width>
-					<textcolor>$INFO[Skin.String(main.colour)]</textcolor>
+					<textcolor>$VAR[Colour.500]</textcolor>
 					<include>WindowTitleCommons</include>
 					<label>[LOWERCASE]home[/LOWERCASE]</label>
 				</control>
@@ -73,7 +73,7 @@
 				<top>110</top>
 				<width>4</width>
 				<height>34</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 		
 			<!--sort method label-->
@@ -86,7 +86,7 @@
 				<aligny>center</aligny>
 				<font>breadcrumb.secondary</font>
 				<textcolor>text.primary</textcolor>
-				<label>Welcome, [COLOR=$INFO[Skin.String(main.colour)]]$INFO[System.ProfileName][/COLOR]</label>
+				<label>Welcome, [COLOR=$VAR[Colour.500]]$INFO[System.ProfileName][/COLOR]</label>
 			</control>
 			
 		</control>
@@ -96,65 +96,64 @@
 			<left>0</left>
 			<top>140</top>
 			<visible>Player.HasAudio + !Skin.HasSetting(homepageMusicinfo)</visible>
-			<include>VisibleFadeEffect</include>
-			<include>Window_OpenClose_Animation</include>
 			
 			<!--cover-->
 			<control type="image">
-				<left>60</left>
-				<top>340</top>
-				<width>175</width>
-				<height>175</height>
+				<left>55</left>
+				<top>337</top>
+				<width>181</width>
+				<height>181</height>
 				<aspectratio aligny="bottom">stretch</aspectratio>
+				<bordersize>5</bordersize>
+				<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/square shadow small.png</bordertexture>
 				<texture fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-				<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-				<bordersize>2</bordersize>
 			</control>
 			
 			<!--labels-->
 			<control type="group">
 				<top>0</top>
 			
+				<!--title-->
 				<control type="label">
-					<description>Title label</description>
-					<left>245</left>
+					<left>240</left>
 					<top>415</top>
 					<height>45</height>
 					<width>1500</width>
-					<label>$INFO[Player.Title]</label>
 					<align>left</align>
 					<aligny>center</aligny>
 					<font>breadcrumb</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Title]</label>
 				</control>
 				
+				<!--artist/album-->
 				<control type="label">
 					<description>Album Label</description>
-					<left>245</left>
+					<left>240</left>
 					<top>454</top>
 					<height>38</height>
 					<width>825</width>
-					<label>$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Album]$INFO[musicplayer.discnumber, - $LOCALIZE[427]: ]</label>
 					<align>left</align>
 					<aligny>center</aligny>
 					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Album]$INFO[musicplayer.discnumber, - $LOCALIZE[427]: ]</label>
 				</control>
 				
+				<!--time-->
 				<control type="label">
-					<description>Time Label</description>
-					<left>245</left>
+					<left>240</left>
 					<top>480</top>
 					<height>45</height>
 					<width>450</width>
-					<label>$INFO[Player.Time] [COLOR=$INFO[Skin.String(main.colour)]]/[/COLOR] $INFO[Player.Duration,]</label>
 					<align>left</align>
 					<aligny>center</aligny>
 					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
 				</control>
 				
 			</control>
@@ -166,9 +165,6 @@
 			<left>735r</left>
 			<top>155</top>
 			<visible>Container(9000).HasFocus(12) + [PVR.IsRecording | PVR.HasNonRecordingTimer]</visible>
-			<include>VisibleFadeEffect</include>
-			<include>Window_OpenClose_Animation</include>
-			<animation effect="fade" start="100" end="0" time="200" condition="Window.IsActive(Favourites)">conditional</animation>
 			
 			<control type="group">
 				<animation effect="slide" start="0,0" end="0,150" time="0" condition="PVR.IsRecording">conditional</animation>
@@ -326,229 +322,248 @@
 		<!--Now playing video Info -->
 		<control type="group">
 			<left>0</left>
-			<top>125</top>
+			<top>140</top>
 			<visible>Player.HasVideo + !Skin.HasSetting(homepageVideoinfo)</visible>
-			<include>VisibleFadeEffect</include>
-			<include>Window_OpenClose_Animation</include>
 			
+			<!--videos-->
 			<control type="group">
 				<visible>!VideoPlayer.Content(Movies) + !VideoPlayer.Content(Episodes) + !VideoPlayer.Content(LiveTV)</visible>
-				
+			
+				<!--cover bg-->
 				<control type="image">
-					<description>Cover image</description>
-					<left>30</left>
-					<top>68</top>
-					<width>225</width>
-					<height>450</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
-					<bordertexture border="8">ThumbBorder.png</bordertexture>
+					<left>55</left>
+					<top>337</top>
+					<width>270</width>
+					<height>180</height>
+					<aspectratio aligny="bottom">stretch</aspectratio>
 					<bordersize>5</bordersize>
+					<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/square shadow small.png</bordertexture>
+					<texture>backgrounds/white.png</texture>
 				</control>
-				
+					
+				<!--video-->
+				<control type="videowindow">
+					<left>60</left>
+					<top>342</top>
+					<width>260</width>
+					<height>170</height>
+					<visible>Player.HasVideo</visible>
+				</control>
+			
+				<!--title-->
 				<control type="label">
-					<description>Title label</description>
-					<left>285</left>
-					<top>428</top>
+					<left>330</left>
+					<top>444</top>
 					<height>45</height>
 					<width>1500</width>
-					<label>$INFO[Player.Title]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font13_title</font>
+					<font>breadcrumb</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Title]</label>
 				</control>
 				
+				<!--time-->
 				<control type="label">
-					<description>Time Label</description>
-					<left>285</left>
-					<top>465</top>
+					<left>330</left>
+					<top>480</top>
 					<height>45</height>
 					<width>450</width>
-					<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=blue] / [/COLOR]]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font12</font>
+					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
 				</control>
 				
 			</control>
 			
+			<!--live tv-->
 			<control type="group">
 				<visible>VideoPlayer.Content(LiveTV)</visible>
-				
+			
+				<!--cover bg-->
 				<control type="image">
-					<description>Cover image</description>
-					<left>30</left>
-					<top>68</top>
-					<width>180</width>
-					<height>450</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
-					<bordertexture border="8">ThumbBorder.png</bordertexture>
+					<left>55</left>
+					<top>337</top>
+					<width>270</width>
+					<height>180</height>
+					<aspectratio aligny="bottom">stretch</aspectratio>
 					<bordersize>5</bordersize>
+					<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/square shadow small.png</bordertexture>
+					<texture>backgrounds/white.png</texture>
 				</control>
-				
-				<control type="label">
-					<description>Channel label</description>
-					<left>240</left>
-					<top>398</top>
-					<height>38</height>
-					<width>990</width>
-					<label>$INFO[VideoPlayer.ChannelName]</label>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>font12</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					
+				<!--video-->
+				<control type="videowindow">
+					<left>60</left>
+					<top>342</top>
+					<width>260</width>
+					<height>170</height>
+					<visible>Player.HasVideo</visible>
 				</control>
-				
+			
+				<!--title-->
 				<control type="label">
-					<description>Title label</description>
-					<left>240</left>
-					<top>428</top>
+					<left>330</left>
+					<top>415</top>
 					<height>45</height>
 					<width>1500</width>
-					<label>$INFO[Player.Title]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font13_title</font>
+					<font>breadcrumb</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Title]</label>
 				</control>
 				
+				<!--channel-->
 				<control type="label">
-					<description>Time Label</description>
-					<left>240</left>
-					<top>465</top>
-					<height>45</height>
-					<width>450</width>
-					<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=blue] / [/COLOR]]</label>
+					<left>330</left>
+					<top>454</top>
+					<height>38</height>
+					<width>825</width>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font12</font>
+					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[VideoPlayer.ChannelName]</label>
+				</control>
+				
+				<!--time-->
+				<control type="label">
+					<left>330</left>
+					<top>480</top>
+					<height>45</height>
+					<width>450</width>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>breadcrumb.secondary</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
 				</control>
 				
 			</control>
 			
+			<!--movies-->
 			<control type="group">
 				<visible>VideoPlayer.Content(Movies)</visible>
 				
 				<control type="image">
-					<description>Cover image</description>
-					<left>30</left>
-					<top>68</top>
-					<width>180</width>
-					<height>450</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
-					<bordertexture border="8">ThumbBorder.png</bordertexture>
+					<left>55</left>
+					<top>257</top>
+					<width>175</width>
+					<height>263</height>
+					<aspectratio aligny="bottom">stretch</aspectratio>
+					<bordertexture>backgrounds/poster shadow small.png</bordertexture>
 					<bordersize>5</bordersize>
+					<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
 				</control>
 				
+				<!--title-->
 				<control type="label">
-					<description>Studio label</description>
-					<left>240</left>
-					<top>398</top>
-					<height>38</height>
-					<width>1500</width>
-					<label>$INFO[VideoPlayer.Studio]</label>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>font12</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
-				</control>
-				
-				<control type="label">
-					<description>Title label</description>
-					<left>240</left>
-					<top>428</top>
+					<left>233</left>
+					<top>415</top>
 					<height>45</height>
 					<width>1500</width>
-					<label>$INFO[Player.Title]$INFO[VideoPlayer.Year,[COLOR=grey] (,)[/COLOR]]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font13_title</font>
+					<font>breadcrumb</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Title]</label>
 				</control>
 				
+				<!--studio-->
 				<control type="label">
-					<description>Time Label</description>
-					<left>240</left>
-					<top>465</top>
+					<left>233</left>
+					<top>454</top>
+					<height>38</height>
+					<width>825</width>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>breadcrumb.secondary</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[VideoPlayer.Studio]</label>
+				</control>
+				
+				<!--time-->
+				<control type="label">
+					<left>233</left>
+					<top>480</top>
 					<height>45</height>
 					<width>450</width>
-					<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=blue] / [/COLOR]]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font12</font>
+					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
 				</control>
 				
 			</control>
 			
+			<!--episodes-->
 			<control type="group">
 				<visible>VideoPlayer.Content(Episodes)</visible>
 				
+				<!--thumb-->
 				<control type="image">
-					<description>Cover image</description>
-					<left>30</left>
+					<left>55</left>
 					<top>338</top>
 					<width>270</width>
 					<height>180</height>
 					<aspectratio>scale</aspectratio>
 					<texture fallback="DefaultVideoCover.png">$INFO[Player.Art(thumb)]</texture>
-					<bordertexture border="8">ThumbBorder.png</bordertexture>
+					<bordertexture>backgrounds/episode shadow small.png</bordertexture>
 					<bordersize>5</bordersize>
 				</control>
 				
+				<!--title-->
 				<control type="label">
-					<description>TV Show Season Ep Label</description>
-					<left>315</left>
-					<top>398</top>
-					<height>38</height>
-					<width>1500</width>
-					<label>$INFO[VideoPlayer.TVShowTitle] ($INFO[VideoPlayer.Season,$LOCALIZE[20373] , - ]$INFO[VideoPlayer.episode,$LOCALIZE[20359] ,])</label>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>font12</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
-				</control>
-				
-				<control type="label">
-					<description>Title label</description>
-					<left>315</left>
-					<top>428</top>
+					<left>330</left>
+					<top>415</top>
 					<height>45</height>
 					<width>1500</width>
-					<label>$INFO[Player.Title]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font13_title</font>
+					<font>breadcrumb</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Title]</label>
 				</control>
 				
+				<!--episode-->
 				<control type="label">
-					<description>Time Label</description>
-					<left>315</left>
-					<top>465</top>
+					<left>330</left>
+					<top>454</top>
+					<height>38</height>
+					<width>825</width>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>breadcrumb.secondary</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[VideoPlayer.TVShowTitle] ($INFO[VideoPlayer.Season,$LOCALIZE[20373] , - ]$INFO[VideoPlayer.episode,$LOCALIZE[20359] ,])</label>
+				</control>
+				
+				<!--time-->
+				<control type="label">
+					<left>330</left>
+					<top>480</top>
 					<height>45</height>
 					<width>450</width>
-					<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=blue] / [/COLOR]]</label>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font12</font>
+					<font>breadcrumb.secondary</font>
 					<textcolor>white</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>button.nf</shadowcolor>
+					<label>$INFO[Player.Time] / $INFO[Player.Duration,]</label>
 				</control>
 				
 			</control>
@@ -631,7 +646,7 @@
 					<font>breadcrumb.tertiary</font>
 					<textcolor>text.primary</textcolor>
 					<focusedcolor>white</focusedcolor>
-					<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
 					<texturenofocus colordiffuse="button.border">button-border-search.png</texturenofocus>
 					<pulseonselect>false</pulseonselect>
 					<label>137</label>
@@ -687,7 +702,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDPrevTrackNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDPrevTrackNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDPrevTrackNF.png</texturenofocus>
 							<onleft>608</onleft>
 							<onright>602</onright>
@@ -702,7 +717,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDRewindNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDRewindNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDRewindNF.png</texturenofocus>
 							<onleft>601</onleft>
 							<onright>603</onright>
@@ -717,10 +732,10 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDPauseNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDPauseNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDPauseNF.png</texturenofocus>
 							<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
-							<alttexturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDPlayNF.png</alttexturefocus>
+							<alttexturefocus colordiffuse="$VAR[Colour.500]">OSDPlayNF.png</alttexturefocus>
 							<alttexturenofocus colordiffuse="text.primary">OSDPlayNF.png</alttexturenofocus>
 							<onleft>602</onleft>
 							<onright>604</onright>
@@ -735,7 +750,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDStopNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDStopNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDStopNF.png</texturenofocus>
 							<onleft>603</onleft>
 							<onright>605</onright>
@@ -751,7 +766,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDForwardNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDForwardNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDForwardNF.png</texturenofocus>
 							<onleft>604</onleft>
 							<onright>606</onright>
@@ -766,7 +781,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDNextTrackNF.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDNextTrackNF.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDNextTrackNF.png</texturenofocus>
 							<onleft>605</onleft>
 							<onright>607</onright>
@@ -788,7 +803,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDChannelUPFO.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDChannelUPFO.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDChannelUPNF.png</texturenofocus>
 							<onleft>608</onleft>
 							<onright>602</onright>
@@ -803,7 +818,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDChannelDownFO.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDChannelDownFO.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDChannelDownNF.png</texturenofocus>
 							<onleft>601</onleft>
 							<onright>603</onright>
@@ -818,7 +833,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDStopFO.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDStopFO.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDStopNF.png</texturenofocus>
 							<onleft>602</onleft>
 							<onright>604</onright>
@@ -834,10 +849,10 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDPauseFO.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDPauseFO.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDPauseNF.png</texturenofocus>
 							<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
-							<alttexturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDPlayFO.png</alttexturefocus>
+							<alttexturefocus colordiffuse="$VAR[Colour.500]">OSDPlayFO.png</alttexturefocus>
 							<alttexturenofocus colordiffuse="text.primary">OSDPlayNF.png</alttexturenofocus>
 							<onleft>603</onleft>
 							<onright>606</onright>
@@ -854,7 +869,7 @@
 							<width>25</width>
 							<height>25</height>
 							<label>-</label>
-							<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">OSDRecordOffFO.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[Colour.500]">OSDRecordOffFO.png</texturefocus>
 							<texturenofocus colordiffuse="text.primary">OSDRecordOffNF.png</texturenofocus>
 							<onleft>604</onleft>
 							<onright>607</onright>
@@ -891,7 +906,7 @@
 					<font>breadcrumb.tertiary</font>
 					<textcolor>text.primary</textcolor>
 					<focusedcolor>white</focusedcolor>
-					<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
 					<texturenofocus colordiffuse="button.border">button-border-fullscreen.png</texturenofocus>
 					<pulseonselect>false</pulseonselect>
 					<label>31008</label>
@@ -918,7 +933,7 @@
 				<top>0</top>
 				<width>4</width>
 				<height>45</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
 		</control>
@@ -1050,7 +1065,7 @@
 						<top>15</top>
 						<width>1</width>
 						<height>62</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 					</control>
 					
 					<!--label-->
@@ -1075,7 +1090,7 @@
 						<top>15</top>
 						<width>1</width>
 						<height>62</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 					</control>
 					
 					<control type="label">
@@ -1098,7 +1113,7 @@
 						<width>335</width>
 						<height>90</height>
 						<font>main.menu</font>
-						<textcolor>$INFO[Skin.String(main.colour)]</textcolor>
+						<textcolor>$VAR[Colour.500]</textcolor>
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -1237,7 +1252,7 @@
 				<top>10</top>
 				<width>4</width>
 				<height>92</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 		
 			<!--background strip right-->
@@ -1246,7 +1261,7 @@
 				<top>10</top>
 				<width>4</width>
 				<height>92</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
 		</control>
@@ -1255,6 +1270,7 @@
 		<control type="group" id="9002">
 			<onup>9001</onup>
 			<ondown>20</ondown>
+			<animation effect="slide" start="0,0" end="0,-20" time="0" condition="system.getbool(lookandfeel.enablerssfeeds)">Conditional</animation>
 			
 			<control type="fixedlist" id="700">
 				<animation effect="slide" start="0,0" end="-136,0" time="0" condition="StringCompare(Container(700).NumItems,2) | StringCompare(Container(700).NumItems,4)">conditional</animation>
@@ -1328,31 +1344,38 @@
 		
 		<!--rss feed-->
 		<control type="group">
-			<left>0</left>
-			<top>50r</top>
 			<visible>system.getbool(lookandfeel.enablerssfeeds)</visible>
 			<include>Window_OpenClose_Animation</include>
 			
-			<control type="rss">
-				<description>RSS feed</description>
-				<left>150</left>
-				<top>0</top>
-				<height>45</height>
-				<width>1718</width>
-				<font>font12</font>
-				<urlset>1</urlset>
-				<textcolor>blue</textcolor>
-				<titlecolor>blue</titlecolor>
-				<headlinecolor>white</headlinecolor>
+			<!--rss background-->
+			<control type="image">
+				<left>60</left>
+				<top>54r</top>
+				<width>1796</width>
+				<height>34</height>
+				<texture colordiffuse="tertiary">backgrounds/white.png</texture>
+			</control>
+		
+			<!--rss background strip-->
+			<control type="image">
+				<left>64r</left>
+				<top>54r</top>
+				<width>4</width>
+				<height>34</height>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
-			<control type="image">
-				<description>RSS background</description>
-				<left>1875</left>
-				<top>3</top>
-				<width>36</width>
-				<height>36</height>
-				<texture>icon-rss.png</texture>
+			<!--rss feed-->
+			<control type="rss">
+				<left>70</left>
+				<top>52r</top>
+				<height>34</height>
+				<width>1775</width>
+				<font>breadcrumb.secondary</font>
+				<urlset>1</urlset>
+				<textcolor>$VAR[Colour.500]</textcolor>
+				<titlecolor>$VAR[Colour.500]</titlecolor>
+				<headlinecolor>text.primary</headlinecolor>
 			</control>
 			
 		</control>
@@ -1399,7 +1422,7 @@
 				<width>45</width>
 				<height>45</height>
 				<aspectratio>keep</aspectratio>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">icon_power.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">icon_power.png</texture>
 				<visible>Control.HasFocus(20)</visible>
 			</control>
 			
@@ -1438,7 +1461,7 @@
 				<width>45</width>
 				<height>45</height>
 				<aspectratio>keep</aspectratio>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">icon_favourites.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">icon_favourites.png</texture>
 				<visible>Control.HasFocus(21)</visible>
 			</control>
 			

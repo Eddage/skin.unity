@@ -307,11 +307,11 @@
 	
 	<include name="HomeSubMenuLiveTV">
 	
-		<control type="image" id="90101">
+		<!--control type="image" id="90101">
 			<width>60</width>
 			<height>70</height>
 			<texture colordiffuse="tertiary" flipx="true">HomeSubEnd.png</texture>
-		</control>
+		</control-->
 		
 		<control type="button" id="90142">
 			<include>ButtonHomeSubCommonValues</include>
@@ -343,11 +343,11 @@
 			<onclick>ActivateWindowAndFocus(MyPVR, 35,0, 14,0)</onclick>
 		</control>
 		
-		<control type="image" id="90108">
+		<!--control type="image" id="90108">
 			<width>60</width>
 			<height>70</height>
 			<texture colordiffuse="tertiary">HomeSubEnd.png</texture>
-		</control>
+		</control-->
 		
 	</include>
 	

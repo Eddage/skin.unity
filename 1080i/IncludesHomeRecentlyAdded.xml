@@ -59,14 +59,14 @@
 						
 						<!--thumb-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>204</width>
-							<height>304</height>
+							<left>0</left>
+							<top>0</top>
+							<width>210</width>
+							<height>310</height>
 							<aspectratio>scale</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/poster shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 						</control>
 						
 					</itemlayout>
@@ -81,21 +81,21 @@
 							<height>310</height>
 							<aspectratio>scale</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+							<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
 							<bordersize>5</bordersize>
 							<visible>Control.HasFocus(8000)</visible>
 						</control>
 						
 						<!--thumb (not focused)-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>204</width>
-							<height>304</height>
+							<left>0</left>
+							<top>0</top>
+							<width>210</width>
+							<height>310</height>
 							<aspectratio>scale</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/poster shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 							<visible>!Control.HasFocus(8000)</visible>
 						</control>
 			
@@ -113,11 +113,11 @@
 						<control type="label">
 							<left>15</left>
 							<top>269</top>
-							<width>170</width>
+							<width>180</width>
 							<height>60</height>
 							<font>secondary.info.light</font>
 							<textcolor>text.primary</textcolor>
-							<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+							<selectedcolor>$VAR[Colour.500]</selectedcolor>
 							<align>left</align>
 							<label>$INFO[ListItem.Label]</label>
 							<scroll>true</scroll>
@@ -254,7 +254,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-left.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-left.png</texture>
 						<visible>Container(8000).HasPrevious + Control.HasFocus(80001)</visible>
 					</control>
 					
@@ -288,7 +288,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-right.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-right.png</texture>
 						<visible>Container(8000).HasNext + Control.HasFocus(80002)</visible>
 					</control>
 					
@@ -343,13 +343,13 @@
 						
 						<!--bg-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>334</width>
-							<height>236</height>
+							<left>0</left>
+							<top>0</top>
+							<width>340</width>
+							<height>242</height>
 							<texture colordiffuse="black" background="true">backgrounds/white.png</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/episode shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 						</control>
 						
 						<!--thumb-->
@@ -373,20 +373,20 @@
 							<width>340</width>
 							<height>242</height>
 							<texture colordiffuse="black" background="true">backgrounds/white.png</texture>
-							<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+							<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
 							<bordersize>5</bordersize>
 							<visible>Control.HasFocus(8001)</visible>
 						</control>
 						
 						<!--bg (no focus)-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>334</width>
-							<height>236</height>
+							<left>0</left>
+							<top>0</top>
+							<width>340</width>
+							<height>242</height>
 							<texture colordiffuse="black" background="true">backgrounds/white.png</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/episode shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 							<visible>!Control.HasFocus(8001)</visible>
 						</control>
 						
@@ -414,11 +414,11 @@
 						<control type="label">
 							<left>15</left>
 							<top>171</top>
-							<width>300</width>
+							<width>310</width>
 							<height>60</height>
 							<font>secondary.info.light</font>
 							<textcolor>text.primary</textcolor>
-							<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+							<selectedcolor>$VAR[Colour.500]</selectedcolor>
 							<align>left</align>
 							<label>$INFO[ListItem.Label]</label>
 							<scroll>true</scroll>
@@ -433,7 +433,7 @@
 							<height>60</height>
 							<font>secondary.info.light</font>
 							<textcolor>text.primary</textcolor>
-							<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+							<selectedcolor>$VAR[Colour.500]</selectedcolor>
 							<align>left</align>
 							<label>$INFO[ListItem.Label2]</label>
 							<scroll>true</scroll>
@@ -570,7 +570,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-left.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-left.png</texture>
 						<visible>Container(8001).HasPrevious + Control.HasFocus(80011)</visible>
 					</control>
 					
@@ -603,7 +603,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-right.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-right.png</texture>
 						<visible>Container(8001).HasNext + Control.HasFocus(80012)</visible>
 					</control>
 					
@@ -656,14 +656,14 @@
 						
 						<!--thumb-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>240</width>
-							<height>240</height>
-							<aspectratio>stretch</aspectratio>
+							<left>0</left>
+							<top>0</top>
+							<width>246</width>
+							<height>246</height>
+							<aspectratio>keep</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/square shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 						</control>
 						
 					</itemlayout>
@@ -678,21 +678,21 @@
 							<height>246</height>
 							<aspectratio>keep</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+							<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
 							<bordersize>5</bordersize>
 							<visible>Control.HasFocus(8002)</visible>
 						</control>
 						
 						<!--thumb (no focus)-->
 						<control type="image">
-							<left>3</left>
-							<top>3</top>
-							<width>240</width>
-							<height>240</height>
-							<aspectratio>stretch</aspectratio>
+							<left>0</left>
+							<top>0</top>
+							<width>246</width>
+							<height>246</height>
+							<aspectratio>keep</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="tertiary">backgrounds/white.png</bordertexture>
-							<bordersize>2</bordersize>
+							<bordertexture>backgrounds/square shadow small.png</bordertexture>
+							<bordersize>5</bordersize>
 							<visible>!Control.HasFocus(8002)</visible>
 						</control>
 			
@@ -710,11 +710,11 @@
 						<control type="label">
 							<left>15</left>
 							<top>176</top>
-							<width>206</width>
+							<width>216</width>
 							<height>60</height>
 							<font>secondary.info.light</font>
 							<textcolor>text.primary</textcolor>
-							<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+							<selectedcolor>$VAR[Colour.500]</selectedcolor>
 							<align>left</align>
 							<label>$INFO[ListItem.Label]</label>
 							<scroll>true</scroll>
@@ -729,7 +729,7 @@
 							<height>60</height>
 							<font>secondary.info.light</font>
 							<textcolor>text.primary</textcolor>
-							<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+							<selectedcolor>$VAR[Colour.500]</selectedcolor>
 							<align>left</align>
 							<label>$INFO[ListItem.Label2]</label>
 							<scroll>true</scroll>
@@ -876,7 +876,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-left.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-left.png</texture>
 						<visible>Container(8002).HasPrevious + Control.HasFocus(80021)</visible>
 					</control>
 					
@@ -910,7 +910,7 @@
 						<top>205</top>
 						<width>50</width>
 						<height>50</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">arrow-big-right.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">arrow-big-right.png</texture>
 						<visible>Container(8002).HasNext + Control.HasFocus(80022)</visible>
 					</control>
 					

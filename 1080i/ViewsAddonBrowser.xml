@@ -22,7 +22,7 @@
 				<viewtype label="$LOCALIZE[31033]">info</viewtype>
 				<pagecontrol>60</pagecontrol>
 				<scrolltime>200</scrolltime>
-				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons)</visible>
+				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons) | SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
 				
 				<itemlayout height="70" width="1004">
 				
@@ -43,7 +43,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -57,7 +57,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Property(Addon.Status)]</label>
@@ -83,7 +83,7 @@
 						<top>0</top>
 						<width>4</width>
 						<height>60</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
 					</control>
 					
@@ -95,7 +95,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -109,7 +109,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Property(Addon.Status)]</label>
@@ -136,23 +136,33 @@
 				
 				<!--background-->
 				<control type="image">
-					<left>0</left>
-					<top>0</top>
-					<width>460</width>
-					<height>690</height>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+					<left>-18</left>
+					<top>-20</top>
+					<width>496</width>
+					<height>730</height>
+					<texture background="true" colordiffuse="tertiary">backgrounds/info bg.png</texture>
 				</control>
 				
-				<!--thumb-->
+				<!--thumb (fallback)-->
 				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>460</width>
 					<height>460</height>
 					<aspectratio>scale</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.Icon]</texture>
+					<visible>SubString(ListItem.Icon,Default)</visible>
+				</control>
+				
+				<!--thumb (no fallback)-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>460</width>
+					<height>460</height>
+					<aspectratio>scale</aspectratio>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!SubString(ListItem.Icon,Default)</visible>
 				</control>
 				
 				<!--album info-->
@@ -166,8 +176,27 @@
 						<top>0</top>
 						<width>460</width>
 						<height>60</height>
-						<fadetime>IconCrossfadeTime</fadetime>
-						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
+					</control>
+			
+					<!--thumb shadow-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>460</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
+					</control>
+			
+					<!--info strip shadow-->
+					<control type="image">
+						<left>0</left>
+						<top>60</top>
+						<width>510</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
 					</control>
 					
 					<!--secondary label-->
@@ -181,7 +210,7 @@
 						<selectedcolor>white</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
-						<label>$INFO[ListItem.Property(Addon.Version),$LOCALIZE[24051] ,]$INFO[ListItem.Property(Addon.Creator), • $LOCALIZE[21863]: ,] </label>
+						<label>$VAR[Addon.Secondary.Label]</label>
 					</control>
 				
 				</control>
@@ -189,13 +218,13 @@
 				<!--addon description-->
 				<control type="textbox">
 					<left>15</left>
-					<top>527</top>
+					<top>530</top>
 					<width>430</width>
-					<height>150</height>
+					<height>140</height>
 					<font>label</font>
 					<align>left</align>
 					<textcolor>text.primary</textcolor>
-					<label>$INFO[ListItem.Property(Addon.Description)]</label>
+					<label>$VAR[Addon.Description]</label>
 					<autoscroll time="2500" delay="3000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
 				</control>
 				
@@ -224,13 +253,49 @@
 				<onup>551</onup>
 				<ondown>551</ondown>
 				<viewtype label="$LOCALIZE[31033] 2">biginfo</viewtype>
-				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons)</visible>
+				<visible>Window.IsVisible(AddonBrowser) | Container.Content(Addons) | SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
 				<pagecontrol>60</pagecontrol>
 				<scrolltime>200</scrolltime>
 				
 				<itemlayout height="233" width="233">
+
+					<!--background (fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>233</width>
+						<height>233</height>
+						<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/square shadow small.png</bordertexture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+
+					<!--background (no fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>233</width>
+						<height>233</height>
+						<texture background="true" colordiffuse="button.nf">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/square shadow small.png</bordertexture>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
+					</control>
 				
-					<!--icon-->
+					<!--icon (fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>scale</aspectratio>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[Listitem.Icon]</texture>
+						<visible>!SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--icon (no fallback)-->
 					<control type="image">
 						<left>5</left>
 						<top>5</top>
@@ -238,6 +303,32 @@
 						<height>223</height>
 						<aspectratio>scale</aspectratio>
 						<texture background="true">$INFO[Listitem.Icon]</texture>
+						<visible>!SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
+					</control>
+					
+					<!--advanced launcher thumb (fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[Listitem.Icon]</texture>
+						<visible>SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+					
+					<!--advanced launcher thumb (no fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>keep</aspectratio>
+						<texture background="true">$INFO[Listitem.Icon]</texture>
+						<visible>SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
 					</control>
 			
 					<!--overlay background-->
@@ -253,18 +344,77 @@
 				</itemlayout>
 				
 				<focusedlayout height="233" width="233">
-				
-					<!--icon-->
+
+					<!--background (fallback)-->
 					<control type="image">
 						<left>0</left>
 						<top>0</top>
 						<width>233</width>
 						<height>233</height>
+						<texture background="true" colordiffuse="tertiary2">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+
+					<!--background (no fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>233</width>
+						<height>233</height>
+						<texture background="true" colordiffuse="button.nf">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--icon (fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>scale</aspectratio>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[Listitem.Icon]</texture>
+						<visible>!SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--icon (no fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
 						<aspectratio>scale</aspectratio>
 						<texture background="true">$INFO[Listitem.Icon]</texture>
-						<visible>!Container.Content(Episodes)</visible>
-						<bordersize>5</bordersize>
-						<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+						<visible>!SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
+					</control>
+					
+					<!--episode thumb (fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>keep</aspectratio>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[Listitem.Icon]</texture>
+						<visible>SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+					
+					<!--episode thumb (no fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>223</width>
+						<height>223</height>
+						<aspectratio>keep</aspectratio>
+						<texture background="true">$INFO[Listitem.Icon]</texture>
+						<visible>SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
 					</control>
 			
 					<!--label background-->
@@ -284,7 +434,7 @@
 						<height>65</height>
 						<font>secondary.info.big</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<label>$INFO[ListItem.Label]</label>
 						<autoscroll time="2000" delay="2000" repeat="2000" />
@@ -324,12 +474,11 @@
 				
 					<!--background-->
 					<control type="image">
-						<left>0</left>
-						<top>0</top>
-						<width>460</width>
-						<height>690</height>
-						<fadetime>IconCrossfadeTime</fadetime>
-						<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+						<left>-18</left>
+						<top>-20</top>
+						<width>496</width>
+						<height>730</height>
+						<texture background="true" colordiffuse="tertiary">backgrounds/info bg.png</texture>
 					</control>
 					
 					<!--info strip background-->
@@ -338,11 +487,20 @@
 						<top>0</top>
 						<width>460</width>
 						<height>130</height>
-						<fadetime>IconCrossfadeTime</fadetime>
-						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
+					</control>
+			
+					<!--info strip shadow-->
+					<control type="image">
+						<left>0</left>
+						<top>130</top>
+						<width>460</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
 					</control>
 						
-					<!--secondary label-->
+					<!--secondary label 1-->
 					<control type="label">
 						<left>15</left>
 						<top>2</top>
@@ -353,10 +511,10 @@
 						<selectedcolor>white</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
-						<label>$INFO[ListItem.Property(Addon.Creator),,$LOCALIZE[21863]: ]</label>
+						<label>$VAR[Addon.Secondary.Label.1]</label>
 					</control>
 						
-					<!--secondary label-->
+					<!--secondary label 2-->
 					<control type="label">
 						<left>15</left>
 						<top>37</top>
@@ -367,7 +525,21 @@
 						<selectedcolor>white</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
-						<label>$INFO[ListItem.Property(Addon.Version),,$LOCALIZE[24051] ]</label>
+						<label>$VAR[Addon.Secondary.Label.2]</label>
+					</control>
+						
+					<!--secondary label 3-->
+					<control type="label">
+						<left>15</left>
+						<top>72</top>
+						<width>430</width>
+						<height>55</height>
+						<font>secondary.info.big</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$VAR[Addon.Secondary.Label.3]</label>
 					</control>
 					
 					<!--rating-->
@@ -384,13 +556,13 @@
 					<!--plot-->
 					<control type="textbox">
 						<left>15</left>
-						<top>140</top>
+						<top>138</top>
 						<width>430</width>
-						<height>490</height>
+						<height>535</height>
 						<font>label</font>
 						<align>left</align>
 						<textcolor>text.primary</textcolor>
-						<label>$INFO[ListItem.Property(Addon.Description)]</label>
+						<label>$VAR[Addon.Description]</label>
 						<autoscroll time="2000" delay="15000" repeat="10000">Skin.HasSetting(AutoScroll)</autoscroll>
 					</control>
 					

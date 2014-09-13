@@ -10,6 +10,7 @@
 		<control type="group">
 			<animation effect="slide" start="0,0" end="-285,0" time="200" condition="Window.IsVisible(BusyDialog)">conditional</animation>
 			<animation effect="slide" start="0,0" end="0,-90" time="200" condition="Window.IsVisible(ExtendedProgressDialog)">conditional</animation>
+			<animation effect="slide" start="0,0" end="0,-78" time="200" condition="Player.HasMedia + !SubString(Window(videolibrary).Property(TvTunesIsAlive),TRUE)">Conditional</animation>
 			
 			<!--glow-->
 			<control type="image">
@@ -35,16 +36,15 @@
 				<top>133r</top>
 				<width>4</width>
 				<height>73</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
 			<!--icon-->
 			<control type="image" id="400">
-				<description>avatar</description>
-				<left>132r</left>
-				<top>128r</top>
-				<width>63</width>
-				<height>63</height>
+				<left>134.5r</left>
+				<top>130.5r</top>
+				<width>68</width>
+				<height>68</height>
 				<aspectratio>keep</aspectratio>
 				<texture colordiffuse="text.primary">DefaultFile.png</texture>
 			</control>
@@ -64,7 +64,7 @@
 			<control type="fadelabel" id="401">
 				<left>1265</left>
 				<top>125r</top>
-				<width>517</width>
+				<width>512</width>
 				<height>27</height>
 				<font>kai.primary</font>
 				<textcolor>text.primary</textcolor>
@@ -78,7 +78,7 @@
 			<control type="fadelabel" id="402">
 				<left>1265</left>
 				<top>97r</top>
-				<width>517</width>
+				<width>512</width>
 				<height>30</height>
 				<font>kai.secondary</font>
 				<textcolor>text.primary</textcolor>

@@ -55,7 +55,7 @@
 			<fadetime>FanartCrossfadeTime</fadetime>
 			<visible>Skin.HasSetting(ExtraFanart) + !Skin.HasSetting(HideBackGroundFanart)</visible>
 			<include>Window_OpenClose_Animation</include>
-			<visible>![Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)]</visible>
+			<visible>![Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo)] + Container.Content(Movies)</visible>
 		</control>
 		
 		<control type="visualisation">
@@ -65,6 +65,15 @@
 			<height>1080</height>
 			<visible>Player.HasAudio + !Skin.HasSetting(ShowBackgroundVis) + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
 			<visible>!SubString(Window(videolibrary).Property(TvTunesIsAlive),True)</visible>
+		</control>
+		
+		<control type="image">
+			<left>0</left>
+			<top>0</top>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="black">backgrounds/white.png</texture>
+			<visible>Player.HasVideo + !Skin.HasSetting(ShowBackgroundVideo) + ![Window.IsVisible(PVR) + [Control.IsVisible(11) | Control.IsVisible(12)]]</visible>
 		</control>
 		
 		<control type="videowindow">

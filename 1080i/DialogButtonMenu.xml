@@ -54,20 +54,20 @@
 			<!--title-->
 			<control type="label">
 				<left>1920</left>
-				<top>10</top>
+				<top>15</top>
 				<width>360</width>
 				<height>60</height>
-				<label>31064</label>
 				<font>menu.title</font>
-				<textcolor>text.primary</textcolor>
+				<textcolor>white</textcolor>
 				<align>right</align>
 				<aligny>center</aligny>
+				<label>31064</label>
 			</control>
 		
 			<!--buttons grouplist-->
 			<control type="grouplist" id="9000">
 				<left>1930</left>
-				<top>75</top>
+				<top>100</top>
 				<width>510</width>
 				<height>1080</height>
 				<onleft>9000</onleft>

@@ -9,6 +9,7 @@
 	
 		<control type="group">
 			<animation effect="slide" end="0,-120" time="200" condition="Window.IsVisible(FullscreenVideo) | Window.IsVisible(Visualisation)">conditional</animation>
+			<animation effect="slide" start="0,0" end="0,-78" time="200" condition="Player.HasMedia + !SubString(Window(videolibrary).Property(TvTunesIsAlive),TRUE)">Conditional</animation>
 			
 			<!--glow-->
 			<control type="image">
@@ -34,7 +35,7 @@
 				<top>145r</top>
 				<width>4</width>
 				<height>85</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 			
 			<!--icon-->

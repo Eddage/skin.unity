@@ -5,8 +5,8 @@
 	<defaultcontrol always="true">10</defaultcontrol>
 	<allowoverlay>no</allowoverlay>
 	
-	<onload condition="IsEmpty(Skin.String(main.colour))">Skin.SetString(main.colour,FFE23B29)</onload>
-	
+	<onload condition="IsEmpty(Skin.String(Colour.Theme))">Skin.SetString(Colour.Theme,Red)</onload>
+		
 	<controls>
 	
 		<control type="button" id="10">

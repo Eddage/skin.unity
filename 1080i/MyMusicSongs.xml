@@ -144,7 +144,7 @@
 			
 			<control type="grouplist" id="9000">
 				<left>10</left>
-				<top>75</top>
+				<top>100</top>
 				<width>375</width>
 				<height>975</height>
 				<onleft>9000</onleft>

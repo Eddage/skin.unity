@@ -42,7 +42,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -56,7 +56,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label2]</label>
@@ -82,7 +82,7 @@
 						<top>0</top>
 						<width>4</width>
 						<height>60</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
 					</control>
 					
@@ -94,7 +94,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -108,7 +108,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label2]</label>
@@ -135,23 +135,33 @@
 				
 				<!--background-->
 				<control type="image">
-					<left>0</left>
-					<top>0</top>
-					<width>460</width>
-					<height>690</height>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+					<left>-18</left>
+					<top>-20</top>
+					<width>496</width>
+					<height>730</height>
+					<texture background="true" colordiffuse="tertiary">backgrounds/info bg.png</texture>
 				</control>
 				
-				<!--thumb-->
+				<!--thumb (fallback)-->
 				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>460</width>
 					<height>460</height>
 					<aspectratio>scale</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.Icon]</texture>
+					<visible>SubString(ListItem.Icon,Default)</visible>
+				</control>
+				
+				<!--thumb (no fallback)-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>460</width>
+					<height>460</height>
+					<aspectratio>scale</aspectratio>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!SubString(ListItem.Icon,Default)</visible>
 				</control>
 				
 				<!--album info-->
@@ -165,8 +175,27 @@
 						<top>0</top>
 						<width>460</width>
 						<height>95</height>
-						<fadetime>IconCrossfadeTime</fadetime>
-						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
+					</control>
+			
+					<!--thumb shadow-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>460</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
+					</control>
+			
+					<!--info strip shadow-->
+					<control type="image">
+						<left>0</left>
+						<top>95</top>
+						<width>510</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
 					</control>
 					
 					<!--artist label-->
@@ -238,7 +267,7 @@
 						<width>128</width>
 						<height>32</height>
 						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.StarRating,LeftRating/]</texture>
+						<texture colordiffuse="$VAR[Colour.500]">$INFO[ListItem.StarRating,LeftRating/]</texture>
 					</control>
 				
 				</control>
@@ -254,8 +283,7 @@
 						<top>0</top>
 						<width>460</width>
 						<height>130</height>
-						<fadetime>IconCrossfadeTime</fadetime>
-						<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 					</control>
 					
 					<!--track/title label-->
@@ -393,7 +421,21 @@
 				
 				<itemlayout height="300" width="258.5">
 				
-					<!--thumb-->
+					<!--bg (fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>258</width>
+						<height>258</height>
+						<aspectratio>stretch</aspectratio>
+						<fadetime>200</fadetime>
+						<texture background="true">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture>backgrounds/square shadow small.png</bordertexture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--thumb (fallback)-->
 					<control type="image">
 						<left>5</left>
 						<top>5</top>
@@ -401,12 +443,53 @@
 						<height>248</height>
 						<aspectratio>stretch</aspectratio>
 						<fadetime>200</fadetime>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[ListItem.Icon]</texture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--thumb (no fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>258</width>
+						<height>258</height>
+						<aspectratio>stretch</aspectratio>
+						<fadetime>200</fadetime>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<bordersize>5</bordersize>
+						<bordertexture>backgrounds/square shadow small.png</bordertexture>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
 					</control>
 					
 				</itemlayout>
 				
 				<focusedlayout height="300" width="258.5">
+				
+					<!--bg (fallback)-->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>258</width>
+						<height>258</height>
+						<aspectratio>stretch</aspectratio>
+						<fadetime>200</fadetime>
+						<texture background="true">backgrounds/white.png</texture>
+						<bordersize>5</bordersize>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
+				
+					<!--thumb (fallback)-->
+					<control type="image">
+						<left>5</left>
+						<top>5</top>
+						<width>248</width>
+						<height>248</height>
+						<aspectratio>stretch</aspectratio>
+						<fadetime>200</fadetime>
+						<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[ListItem.Icon]</texture>
+						<visible>SubString(ListItem.Icon,Default)</visible>
+					</control>
 				
 					<!--thumb-->
 					<control type="image">
@@ -418,7 +501,8 @@
 						<fadetime>200</fadetime>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<bordersize>5</bordersize>
-						<bordertexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</bordertexture>
+						<bordertexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</bordertexture>
+						<visible>!SubString(ListItem.Icon,Default)</visible>
 					</control>
 					
 				</focusedlayout>
@@ -480,7 +564,7 @@
 				<label>$INFO[Listitem.Property(Album_Artist)]</label>
 				<align>left</align>
 				<aligny>center</aligny>
-				<textcolor>$INFO[Skin.String(main.colour)]</textcolor>
+				<textcolor>$VAR[Colour.500]</textcolor>
 				<scroll>false</scroll>
 			</control>	
 			
@@ -499,7 +583,7 @@
 						<font>secondary.info</font>
 						<align>left</align>
 						<aligny>center</aligny>
-						<textcolor>$INFO[Skin.String(main.colour)]</textcolor>
+						<textcolor>$VAR[Colour.500]</textcolor>
 						<selectedcolor>selected</selectedcolor>
 						<label>$LOCALIZE[562]</label>
 					</control>
@@ -531,7 +615,7 @@
 						<font>secondary.info</font>
 						<align>left</align>
 						<aligny>center</aligny>
-						<textcolor>$INFO[Skin.String(main.colour)]</textcolor>
+						<textcolor>$VAR[Colour.500]</textcolor>
 						<selectedcolor>selected</selectedcolor>
 						<label>$LOCALIZE[515]</label>
 					</control>
@@ -558,7 +642,7 @@
 					<width>128</width>
 					<height>32</height>
 					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.StarRating,LeftRating/]</texture>
+					<texture colordiffuse="$VAR[Colour.500]">$INFO[ListItem.StarRating,LeftRating/]</texture>
 				</control>
 
 			</control>
@@ -569,7 +653,7 @@
 				<top>140</top>
 				<width>1</width>
 				<height>275</height>
-				<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+				<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 			</control>
 					
 			<!--plot-->
@@ -757,7 +841,6 @@
 					<width>435</width>
 					<height>345</height>
 					<aspectratio>keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
 					<bordertexture border="8">ThumbShadow.png</bordertexture>
 					<bordersize>8</bordersize>
@@ -894,7 +977,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -920,7 +1003,7 @@
 						<top>0</top>
 						<width>4</width>
 						<height>60</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
 					</control>
 					
@@ -932,7 +1015,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -959,23 +1042,33 @@
 				
 				<!--background-->
 				<control type="image">
+					<left>-20</left>
+					<top>-20</top>
+					<width>550</width>
+					<height>730</height>
+					<texture background="true" colordiffuse="tertiary">backgrounds/info bg.png</texture>
+				</control>
+				
+				<!--thumb (fallback)-->
+				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>510</width>
-					<height>690</height>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
+					<height>375</height>
+					<aspectratio>keep</aspectratio>
+					<texture colordiffuse="$VAR[Colour.500]" background="true">$INFO[ListItem.Icon]</texture>
+					<visible>SubString(ListItem.Icon,default)</visible>
 				</control>
 				
-				<!--thumb-->
+				<!--thumb (no fallback)-->
 				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>510</width>
 					<height>375</height>
 					<aspectratio>scale</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!SubString(ListItem.Icon,default)</visible>
 				</control>
 				
 				<!--info strip background-->
@@ -984,8 +1077,18 @@
 					<top>375</top>
 					<width>510</width>
 					<height>60</height>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture background="true" colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+					<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
+				</control>
+			
+				<!--thumb shadow-->
+				<control type="image">
+					<left>0</left>
+					<top>375</top>
+					<width>510</width>
+					<height>10</height>
+					<texture>homeshadow.png</texture>
+					<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
+					<animation effect="slide" start="0,0" end="0,-7" time="0" condition="Container.Content(TVShows) | Container.Content(Seasons)">Conditional</animation>
 				</control>
 					
 				<!--secondary label-->
@@ -1036,7 +1139,7 @@
 				<!--artist review-->
 				<control type="textbox">
 					<left>15</left>
-					<top>445</top>
+					<top>438</top>
 					<width>480</width>
 					<height>230</height>
 					<font>label</font>
@@ -1044,6 +1147,17 @@
 					<textcolor>text.primary</textcolor>
 					<label>$INFO[ListItem.Property(Artist_Description)]</label>
 					<autoscroll time="2000" delay="5000" repeat="8000">Skin.HasSetting(AutoScroll)</autoscroll>
+				</control>
+			
+				<!--info strip shadow-->
+				<control type="image">
+					<left>0</left>
+					<top>435</top>
+					<width>510</width>
+					<height>10</height>
+					<texture>homeshadow.png</texture>
+					<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
+					<animation effect="slide" start="0,0" end="0,-7" time="0" condition="Container.Content(TVShows) | Container.Content(Seasons)">Conditional</animation>
 				</control>
 				
 			</control>
@@ -1093,7 +1207,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -1107,7 +1221,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>white</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label2]</label>
@@ -1133,7 +1247,7 @@
 						<top>0</top>
 						<width>4</width>
 						<height>60</height>
-						<texture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texture>
+						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
 						<animation effect="fade" start="100" end="75" time="200" condition="Control.HasFocus(60)">Conditional</animation>
 					</control>
 					
@@ -1145,7 +1259,7 @@
 						<height>60</height>
 						<font>label</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>left</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
@@ -1159,7 +1273,7 @@
 						<height>60</height>
 						<font>secondary.info</font>
 						<textcolor>text.primary</textcolor>
-						<selectedcolor>$INFO[Skin.String(main.colour)]</selectedcolor>
+						<selectedcolor>$VAR[Colour.500]</selectedcolor>
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label2]</label>
@@ -1190,32 +1304,52 @@
 					<top>0</top>
 					<width>510</width>
 					<height>690</height>
-					<fadetime>IconCrossfadeTime</fadetime>
 					<texture background="true" colordiffuse="tertiary">backgrounds/white.png</texture>
 				</control>
 				
-				<!--thumb-->
+				<!--thumb (fallback)-->
 				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>510</width>
 					<height>510</height>
 					<aspectratio>scale</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.Icon]</texture>
+					<visible>SubString(ListItem.Icon,Default)</visible>
+				</control>
+				
+				<!--thumb (no fallback)-->
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>510</width>
+					<height>510</height>
+					<aspectratio>scale</aspectratio>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<visible>!SubString(ListItem.Icon,Default)</visible>
 				</control>
 				
 				<!--album review-->
 				<control type="textbox">
 					<left>15</left>
-					<top>520</top>
+					<top>510</top>
 					<width>480</width>
-					<height>150</height>
+					<height>175</height>
 					<font>label</font>
 					<align>left</align>
 					<textcolor>text.primary</textcolor>
 					<label>$INFO[ListItem.Property(Album_Description)]</label>
 					<autoscroll time="2500" delay="3000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
+				</control>
+			
+				<!--thumb shadow-->
+				<control type="image">
+					<left>0</left>
+					<top>510</top>
+					<width>510</width>
+					<height>10</height>
+					<texture>homeshadow.png</texture>
+					<animation effect="fade" start="100" end="100" time="0" condition="true">Conditional</animation>
 				</control>
 				
 			</control>

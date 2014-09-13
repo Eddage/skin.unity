@@ -234,6 +234,22 @@ msgctxt "#31070"
 msgid "by"
 msgstr ""
 
+msgctxt "#31071"
+msgid "current"
+msgstr ""
+
+msgctxt "#31072"
+msgid "Skin"
+msgstr ""
+
+msgctxt "#31073"
+msgid "Debug options"
+msgstr ""
+
+msgctxt "#31074"
+msgid "Hide debug information"
+msgstr ""
+
 
 
 
@@ -258,7 +274,7 @@ msgid "Show \"Paused\" in picture slide show"
 msgstr ""
 
 msgctxt "#31104"
-msgid "Play Trailers in a window [COLOR=grey3](Video Information Dialogue Only)[/COLOR]"
+msgid "Play Trailers in a window (Video Information Dialogue Only)"
 msgstr ""
 
 #empty string with id 31105
@@ -268,7 +284,7 @@ msgid "Miscellaneous options"
 msgstr ""
 
 msgctxt "#31107"
-msgid "Hide Flagging read from video filenames [COLOR=grey3](Blu-ray, HD-DVD)[/COLOR]"
+msgid "Hide Flagging read from video filenames (Blu-ray, HD-DVD)"
 msgstr ""
 
 msgctxt "#31108"

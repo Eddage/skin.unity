@@ -18,18 +18,19 @@
 	<default type="fadelabel">
 		<left>120</left>
 		<top>90</top>
-		<font>font13</font>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
+		<font>label</font>
+		<textcolor>text.primary</textcolor>
+		<disabledcolor>disabled</disabledcolor>
 	</default>
 	
 	<default type="button">
 		<width>180</width>
 		<height>60</height>
-		<texturefocus colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texturefocus>
-		<texturenofocus colordiffuse="button.border">button-border-180.png</texturenofocus>
-		<font>label</font>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<font>button</font>
 		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
 		<selectedcolor>white</selectedcolor>
 		<disabledcolor>disabled</disabledcolor>
 		<textoffsetx>15</textoffsetx>
@@ -42,14 +43,15 @@
 		<top>250</top>
 		<width>30</width>
 		<height>30</height>
-		<texturefocus>scroll-up-focus.png</texturefocus>
-		<texturenofocus>scroll-up.png</texturenofocus>
-		<alttexturefocus>scroll-down-focus.png</alttexturefocus>
-		<alttexturenofocus>scroll-down.png</alttexturenofocus>
-		<textcolor>white</textcolor>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<alttexturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</alttexturefocus>
+		<alttexturenofocus>-</alttexturenofocus>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
 		<label>-</label>
-		<font>font13</font>
-		<disabledcolor>grey3</disabledcolor>
+		<font>button</font>
+		<disabledcolor>disabled</disabledcolor>
 		<pulseonselect>no</pulseonselect>
 	</default>
 	
@@ -59,8 +61,8 @@
 		<width>615</width>
 		<height>322</height>
 		<align>left</align>
-		<textcolor>white</textcolor>
-		<font>font13</font>
+		<textcolor>text.primary</textcolor>
+		<font>label</font>
 	</default>
 	
 	<default type="progress">
@@ -68,7 +70,7 @@
 		<top>488</top>
 		<texturebg colordiffuse="secondary">backgrounds/white.png</texturebg>
 		<lefttexture>-</lefttexture>
-		<midtexture colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</midtexture>
+		<midtexture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</midtexture>
 		<righttexture>-</righttexture>
 		<overlaytexture>-</overlaytexture>
 	</default>
@@ -82,11 +84,12 @@
 		<texturedownfocus>scroll-down-focus-2.png</texturedownfocus>
 		<align>right</align>
 		<width>50</width>
-		<height>33</height>
-		<font>font13</font>
+		<height>60</height>
+		<font>button</font>
 		<reverse>yes</reverse>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>disabled</disabledcolor>
 		<subtype>text</subtype>
 		<textoffsetx>-8</textoffsetx>
 		<textoffsety>0</textoffsety>
@@ -97,19 +100,20 @@
 		<left>795</left>
 		<top>240</top>
 		<width>450</width>
-		<height>63</height>
-		<spinwidth>50</spinwidth>
-		<spinheight>33</spinheight>
-		<texturefocus>button-focus.png</texturefocus>
+		<height>60</height>
+		<spinwidth>32</spinwidth>
+		<spinheight>36</spinheight>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
-		<textureup>scroll-up-2.png</textureup>
-		<texturedown>scroll-down-2.png</texturedown>
-		<textureupfocus>scroll-up-focus-2.png</textureupfocus>
-		<texturedownfocus>scroll-down-focus-2.png</texturedownfocus>
-		<font>font13</font>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
-		<textoffsetx>10</textoffsetx>
+		<textureup colordiffuse="text.primary">scroll-up-2.png</textureup>
+		<texturedown colordiffuse="text.primary">scroll-down-2.png</texturedown>
+		<textureupfocus colordiffuse="white">scroll-up-2.png</textureupfocus>
+		<texturedownfocus colordiffuse="white">scroll-down-2.png</texturedownfocus>
+		<font>button</font>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>disabled</disabledcolor>
+		<textoffsetx>15</textoffsetx>
 		<aligny>center</aligny>
 		<reverse>yes</reverse>
 		<pulseonselect>no</pulseonselect>
@@ -126,12 +130,12 @@
 		<textureradioonnofocus colordiffuse="text.primary">radiobutton-focus.png</textureradioonnofocus>
 		<textureradioofffocus colordiffuse="tertiary">radiobutton-nofocus.png</textureradioofffocus>
 		<textureradiooffnofocus colordiffuse="text.primary">radiobutton-nofocus.png</textureradiooffnofocus>
-		<texturefocus colordiffuse="tertiary">backgrounds/white.png</texturefocus>
-		<texturenofocus colordiffuse="button.nf">backgrounds/white.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
 		<label>215</label>
-		<font>label</font>
-		<textcolor>white</textcolor>
-		<selectedcolor>text.primary</selectedcolor>
+		<font>button</font>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
 		<disabledcolor>disabled</disabledcolor>
 		<textoffsetx>15</textoffsetx>
 		<aligny>center</aligny>
@@ -142,9 +146,8 @@
 		<left>735</left>
 		<top>502</top>
 		<width>450</width>
-		<height>75</height>
+		<height>60</height>
 		<label>-</label>
-		<font>font12</font>
 		<texturefocus>-</texturefocus>
 		<texturenofocus>-</texturenofocus>
 		<texturebg>button-focus.png</texturebg>
@@ -152,9 +155,10 @@
 		<textureleftfocus>scroll-left-focus.png</textureleftfocus>
 		<textureright>scroll-right.png</textureright>
 		<texturerightfocus>scroll-right-focus.png</texturerightfocus>
-		<font>font13</font>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
+		<font>button</font>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>disabled</disabledcolor>
 		<aligny>center</aligny>
 	</default>
 	
@@ -164,19 +168,20 @@
 	</default>
 	
 	<default type="sliderex">
-		<height>52</height>
-		<textoffsetx>10</textoffsetx>
+		<height>60</height>
+		<textoffsetx>15</textoffsetx>
 		<aligny>center</aligny>
-		<texturefocus border="5">button-focus.png</texturefocus>
-		<texturenofocus border="5">button-nofocus.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
 		<sliderwidth>150</sliderwidth>
 		<sliderheight>20</sliderheight>
 		<texturesliderbar>osd_slider_bg.png</texturesliderbar>
 		<textureslidernib>osd_slider_nibNF.png</textureslidernib>
 		<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
-		<font>font12</font>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
+		<font>button</font>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>disabled</disabledcolor>
 	</default>
 	
 	<default type="mover">
@@ -197,12 +202,13 @@
 		<left>450</left>
 		<top>300</top>
 		<width>450</width>
-		<height>63</height>
-		<texturefocus border="5">button-focus.png</texturefocus>
-		<texturenofocus border="5">button-nofocus.png</texturenofocus>
-		<font>font13</font>
-		<textcolor>white</textcolor>
-		<disabledcolor>grey3</disabledcolor>
+		<height>60</height>
+		<texturefocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+		<font>button</font>
+		<textcolor>text.primary</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>disabled</disabledcolor>
 		<invalidcolor>invalid</invalidcolor>
 		<textoffsetx>10</textoffsetx>
 		<aligny>center</aligny>
@@ -214,7 +220,7 @@
 		<height>690</height>
 		<texturesliderbackground colordiffuse="secondary">backgrounds/white.png</texturesliderbackground>
 		<texturesliderbar colordiffuse="tertiary">backgrounds/white.png</texturesliderbar>
-		<texturesliderbarfocus colordiffuse="$INFO[Skin.String(main.colour)]">backgrounds/white.png</texturesliderbarfocus>
+		<texturesliderbarfocus colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texturesliderbarfocus>
 		<textureslidernib>-</textureslidernib>
 		<textureslidernibfocus>-</textureslidernibfocus>
 		<showonepage>false</showonepage>

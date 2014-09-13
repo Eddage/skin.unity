@@ -39,20 +39,20 @@
 			<!--title-->
 			<control type="label">
 				<left>1920</left>
-				<top>0</top>
+				<top>15</top>
 				<width>360</width>
 				<height>60</height>
-				<label>31065</label>
 				<font>menu.title</font>
-				<textcolor>text.primary</textcolor>
+				<textcolor>white</textcolor>
 				<align>right</align>
 				<aligny>center</aligny>
+				<label>31065</label>
 			</control>
 			
 			<!--buttons grouplist-->
 			<control type="grouplist" id="996">
 				<left>1930</left>
-				<top>70</top>
+				<top>105</top>
 				<width>450</width>
 				<height max="1005">auto</height>
 				<itemgap>3</itemgap>

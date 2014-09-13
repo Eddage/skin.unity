@@ -9,12 +9,15 @@
 			
 		<!--all content-->
 		<control type="group">
+			<left>-265</left>
 			<visible>!Window.IsActive(ShutdownMenu)</visible>
 			<animation effect="slide" start="1650,0" end="0,0" time="400" tween="quadratic" easing="out">WindowOpen</animation>
-			<animation effect="slide" start="0,0" end="1650,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
-			<animation effect="slide" start="1650,0" end="0,0" time="400" tween="quadratic" easing="out">Visible</animation>
-			<animation effect="slide" start="0,0" end="1650,0" time="400" tween="quadratic" easing="out">Hidden</animation>
+			<animation effect="slide" start="0,0" end="-1650,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
+			
+			<animation effect="slide" start="-1650,0" end="0,0" time="400" tween="quadratic" easing="out">Visible</animation>
+			<animation effect="slide" start="0,0" end="-1650,0" time="400" tween="quadratic" easing="out">Hidden</animation>
 		
+			<!--background-->
 			<control type="image">
 				<left>535</left>
 				<top>0</top>
@@ -23,17 +26,46 @@
 				<texture colordiffuse="tertiary">backgrounds/white.png</texture>
 			</control>
 			
+			<!-- left shadow-->
 			<control type="image">
-				<left>525</left>
+				<left>505</left>
 				<top>0</top>
-				<width>10</width>
+				<width>30</width>
 				<height>1080</height>
 				<texture flipx="true">sidebarshadow.png</texture>
 			</control>
 			
+			<!--right shadow-->
+			<control type="image">
+				<left>1925</left>
+				<top>0</top>
+				<width>30</width>
+				<height>1080</height>
+				<texture>sidebarshadow.png</texture>
+			</control>
+				
+			<!--title background-->
+			<control type="image">
+				<left>535</left>
+				<top>0</top>
+				<width>1390</width>
+				<height>110</height>
+				<texture background="true" colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
+			</control>
+		
+			<!--title shadow-->
+			<control type="image">
+				<left>535</left>
+				<top>110</top>
+				<width>1390</width>
+				<height>10</height>
+				<texture>homeshadow.png</texture>
+				<animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
+			</control>
+			
 			<!--close window button-->
 			<control type="button">
-				<left>545</left>
+				<left>540</left>
 				<top>0</top>
 				<width>50</width>
 				<height>25</height>
@@ -51,33 +83,36 @@
 					
 			<!--header-->
 			<control type="label">
-				<left>600</left>
-				<top>40</top>
+				<left>580</left>
+				<top>25</top>
+				<width>1545</width>
 				<height>60</height>
-				<label>Colour Picker</label>
 				<font>info.title</font>
-				<textcolor>text.primary</textcolor>
+				<align>left</align>
 				<aligny>center</aligny>
+				<textcolor>white</textcolor>
+				<label>Colour Picker</label>
 			</control>
 		
 			<!--scrollbar-->
 			<control type="scrollbar" id="61">
-				<left>600</left>
-				<top>1020</top>
-				<width>1275</width>
+				<left>580</left>
+				<top>985</top>
+				<width>1305</width>
 				<height>7</height>
 				<onup>100</onup>
-				<ondown>100</ondown>
+				<ondown>10</ondown>
 				<orientation>horizontal</orientation>
-				<texturesliderbackground colordiffuse="text.primary">backgrounds/white.png</texturesliderbackground>
+				<texturesliderbackground colordiffuse="scroll.secondary">backgrounds/white.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="secondary">backgrounds/white.png</texturesliderbar>
 			</control>
 			
 			<control type="group"> <!--content-->
 
 				<control type="panel" id="100"> <!--colours-->
-					<left>593</left>
-					<top>140</top>
-					<width>1400</width>
+					<left>575</left>
+					<top>150</top>
+					<width>1350</width>
 					<height>900</height>
 					<onup>100</onup>
 					<ondown>61</ondown>
@@ -88,465 +123,238 @@
 					<preloaditems>4</preloaditems>
 					<pagecontrol>61</pagecontrol>
 
-					<itemlayout height="215" width="215">
+					<itemlayout height="410" width="325">
 
+						<!--theme image-->
 						<control type="image">
-							<left>7</left>
-							<top>7</top>
-							<width>200</width>
-							<height>200</height>
+							<left>5</left>
+							<top>5</top>
+							<width>315</width>
+							<height>400</height>
 							<texture background="true">$INFO[ListItem.Thumb]</texture>
+						</control>
+					
+						<!--label-->
+						<control type="label">
+							<left>20</left>
+							<top>100</top>
+							<font>menu.title</font>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
 
 					</itemlayout>
 
-					<focusedlayout height="215" width="215">
+					<focusedlayout height="410" width="325">
 
+						<!--theme image-->
 						<control type="image">
 							<left>0</left>
-							<width>214</width>
-							<height>214</height>
+							<width>325</width>
+							<height>410</height>
 							<texture background="true">$INFO[ListItem.Thumb]</texture>
 							<bordertexture colordiffuse="text.primary">backgrounds/white.png</bordertexture>
-							<bordersize>7</bordersize>
+							<bordersize>5</bordersize>
+						</control>
+					
+						<!--label-->
+						<control type="label">
+							<left>20</left>
+							<top>100</top>
+							<font>menu.title</font>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
 
 					</focusedlayout>
 
 					<content>
 
-						<item id="1"> <!--current-->
-							<onclick>Close</onclick>
-							<thumb>colours/$INFO[Skin.String(main.colour)].png</thumb>
-							<label>selected</label>
+						<item id="1"> <!--Red-->
+							<label>Red</label>
+							<onclick>Skin.SetString(Colour.Theme,Red)</onclick>
+							<thumb>colours/Red.png</thumb>
 						</item>
 
-						<item id="2"> <!--green 1-->
-							<onclick>Skin.SetString(main.colour,FF93ce5f)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF93ce5f.png</thumb>
+						<item id="2"> <!--Pink-->
+							<label>Pink</label>
+							<onclick>Skin.SetString(Colour.Theme,Pink)</onclick>
+							<thumb>colours/Pink.png</thumb>
 						</item>
 
-						<item id="3"> <!--green 2-->
-							<onclick>Skin.SetString(main.colour,FF80d535)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF80d535.png</thumb>
+						<item id="3"> <!--Purple-->
+							<label>Purple</label>
+							<onclick>Skin.SetString(Colour.Theme,Purple)</onclick>
+							<thumb>colours/Purple.png</thumb>
 						</item>
 
-						<item id="4"> <!--green 3-->
-							<onclick>Skin.SetString(main.colour,FF6dbd25)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF6dbd25.png</thumb>
+						<item id="4"> <!--Deep Purple-->
+							<label>Deep Purple</label>
+							<onclick>Skin.SetString(Colour.Theme,Deep Purple)</onclick>
+							<thumb>colours/Deep Purple.png</thumb>
 						</item>
 
-						<item id="5"> <!--green 4-->
-							<onclick>Skin.SetString(main.colour,FF5eb113)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF5eb113.png</thumb>
+						<item id="5"> <!--Indigo-->
+							<label>Indigo</label>
+							<onclick>Skin.SetString(Colour.Theme,Indigo)</onclick>
+							<thumb>colours/Indigo.png</thumb>
 						</item>
 
-						<item id="6"> <!--green 5-->
-							<onclick>Skin.SetString(main.colour,FF5aa615)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF5aa615.png</thumb>
+						<item id="6"> <!--Blue-->
+							<label>Blue</label>
+							<onclick>Skin.SetString(Colour.Theme,Blue)</onclick>
+							<thumb>colours/Blue.png</thumb>
 						</item>
 
-						<item id="7"> <!--green 6-->
-							<onclick>Skin.SetString(main.colour,FF69a013)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF69a013.png</thumb>
+						<item id="7"> <!--Light Blue-->
+							<label>Light Blue</label>
+							<onclick>Skin.SetString(Colour.Theme,Light Blue)</onclick>
+							<thumb>colours/Light Blue.png</thumb>
 						</item>
 
-						<item id="8"> <!--green 7-->
-							<onclick>Skin.SetString(main.colour,FF91ad10)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF91ad10.png</thumb>
+						<item id="8"> <!--Cyan-->
+							<label>Cyan</label>
+							<onclick>Skin.SetString(Colour.Theme,Cyan)</onclick>
+							<thumb>colours/Cyan.png</thumb>
 						</item>
 
-						<item id="9"> <!--green 8-->
-							<onclick>Skin.SetString(main.colour,FFa3b90f)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFa3b90f.png</thumb>
+						<item id="9"> <!--Teal-->
+							<label>Teal</label>
+							<onclick>Skin.SetString(Colour.Theme,Teal)</onclick>
+							<thumb>colours/Teal.png</thumb>
 						</item>
 
-						<item id="10"> <!--green 9-->
-							<onclick>Skin.SetString(main.colour,FFb5c814)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFb5c814.png</thumb>
+						<item id="10"> <!--Green-->
+							<label>Green</label>
+							<onclick>Skin.SetString(Colour.Theme,Green)</onclick>
+							<thumb>colours/Green.png</thumb>
 						</item>
 
-						<item id="11"> <!--green 10-->
-							<onclick>Skin.SetString(main.colour,FFc7d92b)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFc7d92b.png</thumb>
+						<item id="11"> <!--Light Green-->
+							<label>Light Green</label>
+							<onclick>Skin.SetString(Colour.Theme,Light Green)</onclick>
+							<thumb>colours/Light Green.png</thumb>
 						</item>
 
-						<item id="12"> <!--green 11-->
-							<onclick>Skin.SetString(main.colour,FFdde339)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFdde339.png</thumb>
+						<item id="12"> <!--Lime-->
+							<label>Lime</label>
+							<onclick>Skin.SetString(Colour.Theme,Lime)</onclick>
+							<thumb>colours/Lime.png</thumb>
 						</item>
 
-						<item id="13"> <!--green 12-->
-							<onclick>Skin.SetString(main.colour,FFe8ef23)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe8ef23.png</thumb>
+						<item id="13"> <!--Yellow-->
+							<label>Yellow</label>
+							<onclick>Skin.SetString(Colour.Theme,Yellow)</onclick>
+							<thumb>colours/Yellow.png</thumb>
 						</item>
 
-						<item id="14"> <!--yellow 1-->
-							<onclick>Skin.SetString(main.colour,FFfed530)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFfed530.png</thumb>
+						<item id="14"> <!--Amber-->
+							<label>Amber</label>
+							<onclick>Skin.SetString(Colour.Theme,Amber)</onclick>
+							<thumb>colours/Amber.png</thumb>
 						</item>
 
-						<item id="15"> <!--yellow 2-->
-							<onclick>Skin.SetString(main.colour,FFffcc00)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFffcc00.png</thumb>
+						<item id="15"> <!--Orange-->
+							<label>Orange</label>
+							<onclick>Skin.SetString(Colour.Theme,Orange)</onclick>
+							<thumb>colours/Orange.png</thumb>
 						</item>
 
-						<item id="16"> <!--yellow 3-->
-							<onclick>Skin.SetString(main.colour,FFebbd04)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFebbd04.png</thumb>
+						<item id="16"> <!--Deep Orange-->
+							<label>Deep Orange</label>
+							<onclick>Skin.SetString(Colour.Theme,Deep Orange)</onclick>
+							<thumb>colours/Deep Orange.png</thumb>
 						</item>
 
-						<item id="17"> <!--yellow 4-->
-							<onclick>Skin.SetString(main.colour,FFe0b403)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe0b403.png</thumb>
+						<item id="17"> <!--Brown-->
+							<label>Brown</label>
+							<onclick>Skin.SetString(Colour.Theme,Brown)</onclick>
+							<thumb>colours/Brown.png</thumb>
 						</item>
 
-						<item id="18"> <!--yellow 5-->
-							<onclick>Skin.SetString(main.colour,FFd1a408)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFd1a408.png</thumb>
+						<item id="18"> <!--Blue Grey-->
+							<label>Blue Grey</label>
+							<onclick>Skin.SetString(Colour.Theme,Blue Grey)</onclick>
+							<thumb>colours/Blue Grey.png</thumb>
 						</item>
 
-						<item id="19"> <!--orange 1-->
-							<onclick>Skin.SetString(main.colour,FFf6983c)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFf6983c.png</thumb>
-						</item>
-
-						<item id="20"> <!--orange 2-->
-							<onclick>Skin.SetString(main.colour,FFff9329)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFff9329.png</thumb>
-						</item>
-
-						<item id="21"> <!--orange 3-->
-							<onclick>Skin.SetString(main.colour,FFfb8512)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFfb8512.png</thumb>
-						</item>
-
-						<item id="22"> <!--orange 4-->
-							<onclick>Skin.SetString(main.colour,FFee7b0a)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFee7b0a.png</thumb>
-						</item>
-
-						<item id="23"> <!--orange 5-->
-							<onclick>Skin.SetString(main.colour,FFf16816)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFf16816.png</thumb>
-						</item>
-
-						<item id="24"> <!--orange 6-->
-							<onclick>Skin.SetString(main.colour,FFf14416)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFf14416.png</thumb>
-						</item>
-
-						<item id="25"> <!--red 1-->
-							<onclick>Skin.SetString(main.colour,FFe95d4e)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe95d4e.png</thumb>
-							<label>FFe95d4e</label>
-						</item>
-
-						<item id="26"> <!--red 2-->
-							<onclick>Skin.SetString(main.colour,FFed4938)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFed4938.png</thumb>
-							<label>FFed4938</label>
-						</item>
-
-						<item id="27"> <!--red 3-->
-							<onclick>Skin.SetString(main.colour,FFe23b29)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe23b29.png</thumb>
-							<label>FFe23b29</label>
-						</item>
-
-						<item id="28"> <!--red 4-->
-							<onclick>Skin.SetString(main.colour,FFed2914)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFed2914.png</thumb>
-							<label>FFed2914</label>
-						</item>
-
-						<item id="29"> <!--red 5-->
-							<onclick>Skin.SetString(main.colour,FFe01d08)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe01d08.png</thumb>
-							<label>FFe01d08</label>
-						</item>
-
-						<item id="30"> <!--red 6-->
-							<onclick>Skin.SetString(main.colour,FFc81805)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFc81805.png</thumb>
-							<label>FFc81805</label>
-						</item>
-
-						<item id="31"> <!--red 7-->
-							<onclick>Skin.SetString(main.colour,FFc90533)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFc90533.png</thumb>
-							<label>FFc90533</label>
-						</item>
-
-						<item id="32"> <!--red 8-->
-							<onclick>Skin.SetString(main.colour,FFcf205a)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFcf205a.png</thumb>
-							<label>FFcf205a</label>
-						</item>
-
-						<item id="33"> <!--red 9-->
-							<onclick>Skin.SetString(main.colour,FFd82f76)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFd82f76.png</thumb>
-							<label>FFd82f76</label>
-						</item>
-
-						<item id="34"> <!--red 10-->
-							<onclick>Skin.SetString(main.colour,FFe6589e)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFe6589e.png</thumb>
-							<label>FFe6589e</label>
-						</item>
-
-						<item id="35"> <!--pink 1-->
-							<onclick>Skin.SetString(main.colour,FFee7fc9)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFee7fc9.png</thumb>
-						</item>
-
-						<item id="36"> <!--pink 2-->
-							<onclick>Skin.SetString(main.colour,FFfd76d0)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFfd76d0.png</thumb>
-						</item>
-
-						<item id="37"> <!--pink 3-->
-							<onclick>Skin.SetString(main.colour,FFfb61c7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFfb61c7.png</thumb>
-						</item>
-
-						<item id="38"> <!--pink 4-->
-							<onclick>Skin.SetString(main.colour,FFf250bb)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFf250bb.png</thumb>
-						</item>
-
-						<item id="39"> <!--pink 5-->
-							<onclick>Skin.SetString(main.colour,FFf038b2)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFf038b2.png</thumb>
-						</item>
-
-						<item id="40"> <!--pink 6-->
-							<onclick>Skin.SetString(main.colour,FFeb37d0)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFeb37d0.png</thumb>
-						</item>
-
-						<item id="41"> <!--pink 7-->
-							<onclick>Skin.SetString(main.colour,FFdf3ae9)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFdf3ae9.png</thumb>
-						</item>
-
-						<item id="42"> <!--pink 8-->
-							<onclick>Skin.SetString(main.colour,FFdd53ed)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFdd53ed.png</thumb>
-						</item>
-
-						<item id="43"> <!--purple 1-->
-							<onclick>Skin.SetString(main.colour,FFb47bdc)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFb47bdc.png</thumb>
-						</item>
-
-						<item id="44"> <!--purple 2-->
-							<onclick>Skin.SetString(main.colour,FFaf6bdf)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFaf6bdf.png</thumb>
-						</item>
-
-						<item id="45"> <!--purple 3-->
-							<onclick>Skin.SetString(main.colour,FFa45bd7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FFa45bd7.png</thumb>
-						</item>
-
-						<item id="46"> <!--purple 4-->
-							<onclick>Skin.SetString(main.colour,FF9544ce)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF9544ce.png</thumb>
-						</item>
-
-						<item id="47"> <!--purple 5-->
-							<onclick>Skin.SetString(main.colour,FF862ec3)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF862ec3.png</thumb>
-						</item>
-
-						<item id="48"> <!--purple 6-->
-							<onclick>Skin.SetString(main.colour,FF6d2ac8)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF6d2ac8.png</thumb>
-						</item>
-
-						<item id="49"> <!--purple 7-->
-							<onclick>Skin.SetString(main.colour,FF5334da)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF5334da.png</thumb>
-						</item>
-
-						<item id="50"> <!--purple 8-->
-							<onclick>Skin.SetString(main.colour,FF305bd4)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF305bd4.png</thumb>
-						</item>
-
-						<item id="51"> <!--purple 9-->
-							<onclick>Skin.SetString(main.colour,FF3d70d7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF3d70d7.png</thumb>
-						</item>
-
-						<item id="52"> <!--purple 10-->
-							<onclick>Skin.SetString(main.colour,FF4b82de)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF4b82de.png</thumb>
-						</item>
-
-						<item id="53"> <!--blue 1-->
-							<onclick>Skin.SetString(main.colour,FF87cbf6)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF87cbf6.png</thumb>
-						</item>
-
-						<item id="54"> <!--blue 2-->
-							<onclick>Skin.SetString(main.colour,FF6ebff1)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF6ebff1.png</thumb>
-						</item>
-
-						<item id="55"> <!--blue 3-->
-							<onclick>Skin.SetString(main.colour,FF4bb4f6)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF4bb4f6.png</thumb>
-						</item>
-
-						<item id="56"> <!--blue 4-->
-							<onclick>Skin.SetString(main.colour,FF3ea6e8)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF3ea6e8.png</thumb>
-						</item>
-
-						<item id="57"> <!--blue 5-->
-							<onclick>Skin.SetString(main.colour,FF2d95d7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF2d95d7.png</thumb>
-						</item>
-
-						<item id="58"> <!--blue 6-->
-							<onclick>Skin.SetString(main.colour,FF2dadd7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF2dadd7.png</thumb>
-						</item>
-
-						<item id="59"> <!--blue 7-->
-							<onclick>Skin.SetString(main.colour,FF34c4d9)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF34c4d9.png</thumb>
-						</item>
-
-						<item id="60"> <!--aqua 1-->
-							<onclick>Skin.SetString(main.colour,FF5aeadb)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF5aeadb.png</thumb>
-						</item>
-
-						<item id="61"> <!--aqua 2-->
-							<onclick>Skin.SetString(main.colour,FF45e5c9)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF45e5c9.png</thumb>
-						</item>
-
-						<item id="62"> <!--aqua 3-->
-							<onclick>Skin.SetString(main.colour,FF2ae1b8)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF2ae1b8.png</thumb>
-						</item>
-
-						<item id="63"> <!--aqua 4-->
-							<onclick>Skin.SetString(main.colour,FF19dca7)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF19dca7.png</thumb>
-						</item>
-
-						<item id="64"> <!--aqua 5-->
-							<onclick>Skin.SetString(main.colour,FF0fd39e)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF0fd39e.png</thumb>
-						</item>
-
-						<item id="65"> <!--aqua 6-->
-							<onclick>Skin.SetString(main.colour,FF0fd382)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF0fd382.png</thumb>
-						</item>
-
-						<item id="66"> <!--aqua 7-->
-							<onclick>Skin.SetString(main.colour,FF18ca74)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF18ca74.png</thumb>
-						</item>
-
-						<item id="67"> <!--aqua 8-->
-							<onclick>Skin.SetString(main.colour,FF2ad96c)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF2ad96c.png</thumb>
-						</item>
-
-						<item id="68"> <!--aqua 9-->
-							<onclick>Skin.SetString(main.colour,FF3ee672)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF3ee672.png</thumb>
-						</item>
-
-						<item id="69"> <!--aqua 10-->
-							<onclick>Skin.SetString(main.colour,FF5aec72)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF5aec72.png</thumb>
-						</item>
-
-						<item id="70"> <!--aqua 11-->
-							<onclick>Skin.SetString(main.colour,FF67e964)</onclick>
-							<onclick>Close</onclick>
-							<thumb>colours/FF67e964.png</thumb>
+						<item id="19"> <!--Grey-->
+							<label>Grey</label>
+							<onclick>Skin.SetString(Colour.Theme,Grey)</onclick>
+							<thumb>colours/Grey.png</thumb>
 						</item>
 
 					</content>
 
+				</control>
+			
+				<!--buttons-->
+				<control type="group">
+					<top>355</top>
+			
+					<!--buttons bg-->
+					<control type="image">
+						<left>535</left>
+						<top>655</top>
+						<width>1390</width>
+						<height>70</height>
+						<texture colordiffuse="primary">backgrounds/white.png</texture>
+					</control>
+					
+					<!--buttons shadow-->
+					<control type="image">
+						<left>535</left>
+						<top>655</top>
+						<width>1390</width>
+						<height>10</height>
+						<texture>homeshadow.png</texture>
+						<animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
+					</control>
+				
+					<!--ok circle border-->
+					<control type="image">
+						<left>1730</left>
+						<top>660</top>
+						<width>60</width>
+						<height>60</height>
+						<texture colordiffuse="text.primary">buttoncircleborder.png</texture>
+						<visible>Control.HasFocus(10)</visible>
+					</control>
+				
+					<!--ok circle animation-->
+					<control type="image">
+						<left>1729</left>
+						<top>659</top>
+						<width>62</width>
+						<height>62</height>
+						<texture colordiffuse="$VAR[Colour.500]">buttoncircle.png</texture>
+						<visible>Control.HasFocus(10)</visible>
+						<animation effect="zoom" start="0" end="100" time="250" center="auto">Visible</animation>
+					</control>
+					
+					<!--ok button-->
+					<control type="button" id="10">
+						<left>1730</left>
+						<top>660</top>
+						<width>180</width>
+						<height>60</height>
+						<label>186</label>
+						<font>button</font>
+						<align>left</align>
+						<textoffsetx>60</textoffsetx>
+						<textwidth>130</textwidth>
+						<textcolor>text.primary</textcolor>
+						<focusedcolor>text.primary</focusedcolor>
+						<align>center</align>
+						<onleft>10</onleft>
+						<onright>10</onright>
+						<onup>61</onup>
+						<ondown>10</ondown>
+						<onclick>Close</onclick>
+						<texturefocus colordiffuse="white">okbuttonf.png</texturefocus>
+						<texturenofocus colordiffuse="text.primary">okbutton.png</texturenofocus>			
+					</control>
+					
 				</control>
 			
 			</control>

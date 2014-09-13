@@ -33,7 +33,7 @@
 					<width>85</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -41,7 +41,7 @@
 					<width>123</width>
 					<height>40</height>
 					<texture>flags/base 2.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -49,7 +49,7 @@
 					<width>105</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -57,7 +57,7 @@
 					<width>115</width>
 					<height>40</height>
 					<texture>flags/base 3.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -65,7 +65,7 @@
 					<width>65</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 			</control>
@@ -85,7 +85,7 @@
 					<top>2.5</top>
 					<width>113</width>
 					<height>35</height>
-					<texture fallback="flags/videocodec/default.png" colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
+					<texture fallback="flags/videocodec/default.png" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 			
@@ -103,7 +103,7 @@
 					<top>2.5</top>
 					<width>115</width>
 					<height>35</height>
-					<texture fallback="flags/audio/default.png" colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+					<texture fallback="flags/audio/default.png" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 			
@@ -132,7 +132,7 @@
 					<width>85</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -140,7 +140,7 @@
 					<width>123</width>
 					<height>40</height>
 					<texture>flags/base 2.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -148,7 +148,7 @@
 					<width>105</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -156,7 +156,7 @@
 					<width>115</width>
 					<height>40</height>
 					<texture>flags/base 3.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 				<control type="image">
@@ -164,7 +164,7 @@
 					<width>65</width>
 					<height>40</height>
 					<texture>flags/base.png</texture>
-					<colordiffuse>$INFO[Skin.String(main.colour)]</colordiffuse>
+					<colordiffuse>$VAR[Colour.500]</colordiffuse>
 				</control>
 			
 			</control>
@@ -185,7 +185,7 @@
 					<top>5</top>
 					<width>97</width>
 					<height>30</height>
-					<texture fallback="flags/videocodec/default.png" colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
+					<texture fallback="flags/videocodec/default.png" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 			
@@ -203,7 +203,7 @@
 					<top>5</top>
 					<width>99</width>
 					<height>30</height>
-					<texture fallback="flags/audio/default.png" colordiffuse="$INFO[Skin.String(main.colour)]">$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+					<texture fallback="flags/audio/default.png" colordiffuse="$VAR[Colour.500]">$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 			
