@@ -2,7 +2,7 @@
 
 <addon
   id="skin.unity"
-  version="0.1.1"
+  version="0.1.2"
   name="Unity"
   provider-name="Eddage">
   <requires>

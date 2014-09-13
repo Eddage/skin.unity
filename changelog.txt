@@ -1,4 +1,4 @@
-[B]29/08/2014 - 0.1.0 [ALPHA] [/B]
+[B]13/09/2014 - 0.1.2 [ALPHA] [/B]
 [CHANGED] Added support for Advanced Launcher to Addon Info views
 [CHANGED] Created colour themes
 [CHANGED] Dialog Video Info - added fanart viewer and windowed trailer viewer
